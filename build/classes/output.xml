@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:WSMatching xmlns:ns2="http://www.kth.se/ict/id2208/Matching">
+    <Macthing>
+        <inputServiceName>TripAuthority_x0020_Hotel</inputServiceName>
+        <outputServiceName>TripAuthority_x0020_Hotel</outputServiceName>
+        <WsScore>0.3900134571485815</WsScore>
+        <MatchedOperation>
+            <inputOperationName>SubmitRequestRpc</inputOperationName>
+            <outputOperationName>Requests</outputOperationName>
+            <OpScore>0.3900134571485815</OpScore>
+            <MatchedElement>
+                <inputElement>aSiteId</inputElement>
+                <outputElement>RequestsResult</outputElement>
+                <score>0.26359713811572677</score>
+            </MatchedElement>
+            <MatchedElement>
+                <inputElement>aUserName</inputElement>
+                <outputElement>RequestsResult</outputElement>
+                <score>0.3359109812391624</score>
+            </MatchedElement>
+            <MatchedElement>
+                <inputElement>aPassword</inputElement>
+                <outputElement>RequestsResult</outputElement>
+                <score>0.3359109812391624</score>
+            </MatchedElement>
+            <MatchedElement>
+                <inputElement>aRequestDoc</inputElement>
+                <outputElement>RequestsResult</outputElement>
+                <score>0.6246347280002744</score>
+            </MatchedElement>
+        </MatchedOperation>
+    </Macthing>
+</ns2:WSMatching>

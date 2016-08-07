@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://processor" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://processor" xmlns:intf="http://processor" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <!--WSDL created by Apache Axis version: 1.4
+    Built on Apr 22, 2006 (06:55:48 PDT)-->
+
+    <wsdl:types>
+
+        <schema elementFormDefault="qualified" targetNamespace="http://processor" xmlns="http://www.w3.org/2001/XMLSchema">
+
+
+            <complexType name="identification">
+
+                <all>
+
+                    <element name="Name" type="xsd:string"/>
+                        
+                    <element name="DesignerInfo" type="designerInfo"/>
+
+                </all>
+
+            </complexType>
+            
+            <complexType name="designerInfo">
+
+                <all>
+
+                    <element name="Designer" type="xsd:string"/>
+                        
+                    <element name="Age" type="xsd:string"/>
+
+                </all>
+
+            </complexType>
+
+            <element name="wineInfo">
+
+                <complexType>
+
+                    <all>
+
+                        <element name="Identification" type="identification"/>
+
+                        <element name="Country" type="xsd:string"/>
+
+                        <element name="Cost" type="xsd:double"/>
+
+                        <element name="Area" type="xsd:string"/>
+
+                        <element name="Branch" type="xsd:string"/>
+
+                    </all>
+
+                </complexType>
+
+            </element>
+           
+        </schema>
+
+    </wsdl:types>
+
+   
+    <wsdl:message name="wineInfo">
+
+        <wsdl:part element="impl:wineInfo" name="parameters"/>
+
+    </wsdl:message>
+
+    <wsdl:portType name="Port">
+
+        <wsdl:operation name="getWine">
+
+            <wsdl:input message="impl:wineInfo" name="wineInfo"/>
+
+            <wsdl:output message="xsd:string" name="output"/>
+
+        </wsdl:operation>
+        
+       
+
+    </wsdl:portType>
+
+    <wsdl:binding name="SoapBinding" type="impl:Port">
+
+        <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+        <wsdl:operation name="getWine">
+
+            <wsdlsoap:operation soapAction=""/>
+
+            <wsdl:input name="wineInfo">
+
+                <wsdlsoap:body use="literal"/>
+
+            </wsdl:input>
+
+            <wsdl:output name="output">
+
+                <wsdlsoap:body use="literal"/>
+
+            </wsdl:output>
+
+        </wsdl:operation>
+        
+       
+
+    </wsdl:binding>
+
+    <wsdl:service name="WineService">
+
+        <wsdl:port binding="impl:SoapBinding" name="Port">
+
+            <wsdlsoap:address location="https://regaltek.secured-server.biz/RegalPayment/services/ProcessRequest"/>
+
+        </wsdl:port>
+    </wsdl:service>
+
+</wsdl:definitions>

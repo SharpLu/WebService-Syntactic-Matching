@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://processor" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://processor" xmlns:intf="http://processor" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <!--WSDL created by Apache Axis version: 1.4
+    Built on Apr 22, 2006 (06:55:48 PDT)-->
+
+    <wsdl:types>
+
+        <schema elementFormDefault="qualified" targetNamespace="http://processor" xmlns="http://www.w3.org/2001/XMLSchema">
+            
+            
+            <complexType name="id">
+
+                <all>
+
+                    <element name="Name" type="xsd:string"/>
+                        
+                    <element name="CreatorInfo" type="creatorInfo"/>
+
+                </all>
+
+            </complexType>
+            
+            <complexType name="creatorInfo">
+
+                <all>
+
+                    <element name="Designer" type="xsd:string"/>
+                        
+                    <element name="Age" type="xsd:string"/>
+
+                </all>
+
+            </complexType>
+
+
+            <element name="drinkInfo">
+
+                <complexType>
+
+                    <all>
+                        
+                        <element name="Id" type="id"/>
+
+                        <element name="Country" type="xsd:string"/>
+
+                        <element name="Price" type="xsd:double"/>
+
+                        <element name="Region" type="xsd:string"/>
+
+                        <element name="Company" type="xsd:string"/>
+
+                    </all>
+
+                </complexType>
+
+            </element>
+            
+
+           
+        </schema>
+
+    </wsdl:types>
+
+    <wsdl:message name="drinkInfo">
+
+        <wsdl:part element="impl:drinkInfo" name="parameters"/>
+
+    </wsdl:message>
+
+    
+
+    <wsdl:portType name="Port">
+
+        
+        
+        <wsdl:operation name="getDrink">
+
+            <wsdl:input message="xsd:string" name="input"/>
+
+            <wsdl:output message="impl:drinkInfo" name="drinkInfo"/>
+
+        </wsdl:operation>
+
+    </wsdl:portType>
+
+    <wsdl:binding name="SoapBinding" type="impl:Port">
+
+        <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+        
+        <wsdl:operation name="getDrink">
+
+            <wsdlsoap:operation soapAction=""/>
+
+            <wsdl:input name="input">
+
+                <wsdlsoap:body use="literal"/>
+
+            </wsdl:input>
+
+            <wsdl:output name="drinkInfo">
+
+                <wsdlsoap:body use="literal"/>
+
+            </wsdl:output>
+
+        </wsdl:operation>
+
+    </wsdl:binding>
+
+    <wsdl:service name="DrinkService">
+
+        <wsdl:port binding="impl:SoapBinding" name="Port">
+
+            <wsdlsoap:address location="https://regaltek.secured-server.biz/RegalPayment/services/ProcessRequest"/>
+
+        </wsdl:port>
+
+    </wsdl:service>
+
+</wsdl:definitions>
